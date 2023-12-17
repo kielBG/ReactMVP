@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "pgOptions": {
+                "ssl": true
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "CockroachDB",
+            "connectString": "postgresql://kielBG:2kuLFzE4JaTP@ep-gentle-wind-98274554.us-east-2.aws.neon.tech/ConsiderIt?sslmode=require",
+            "name": "neonConnection"
+        }
+    ]
+}

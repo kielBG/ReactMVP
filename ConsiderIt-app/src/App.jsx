@@ -1,35 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [name, setName] = useState("");
+  const [journalEntry, setJournalEntry] = useState([]);
+  const [journalEntries, setJournalEntries] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+  return <div>working</div>
+  //welcome page with name input
+  //wrapper func with setState for the name, set loading for fetch (get all)
+
+  //daily journal page with journal inputs
+  //local state for saving the entries poss and set state for saving the entries in a object, set loading for fetch (create)
+
+  //main page with prev entries
+  //state of all journal entries to map into multiple cards, set loading for fetch (put and delete, maybe a get one)
+
+  //loading
+  //state of loading (t or f)
+
+
 }
 
 export default App
