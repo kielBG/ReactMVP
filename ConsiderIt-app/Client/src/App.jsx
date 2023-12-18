@@ -14,7 +14,7 @@ function App() {
 
   useEffect (() => {
     const getPrevPosts = async () => {
-      const res = await fetch(`http://localhost:8000/api/journal/${name}`);
+      const res = await fetch(`https://considerit-server.onrender.com/api/journal/${name}`);
       const data =  await res.json();
       console.log(data)
       setJournalEntries(data);
