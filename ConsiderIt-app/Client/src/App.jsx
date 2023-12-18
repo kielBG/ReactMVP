@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import './index.css'
 import Welcome from "./components/welcome.jsx"
 import DailyJournal from "./components/dailyJournal.jsx"
 import JournalEntries from "./components/journalEntries.jsx"
