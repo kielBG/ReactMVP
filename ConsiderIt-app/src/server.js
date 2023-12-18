@@ -37,11 +37,11 @@ app.get('/api/journal', async (req, res) => {
 });
 
 //get one
-app.get('/api/journal/:id', async (req, res) => {
+app.get('/api/journal/:name', async (req, res) => {
     const client = await pool.connect();
-    const {id} = req.params;
+    const {name} = req.params;
     try {
-        const result = await client.query('SELECT * FROM journal WHERE id = $1', [id]);
+        const result = await client.query('SELECT * FROM journal WHERE name = $1', [name]);
         res.json(result.rows);
     } 
     catch (error) {

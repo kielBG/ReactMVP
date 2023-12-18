@@ -6,7 +6,7 @@ function DailyJournal ({dailyEntry}) {
     const [questionOne, setQuestionOne] = useState("");
     const [questionTwo, setQuestionTwo] = useState("");
     const [questionThree, setQuestionThree] = useState("");
-    const [friendlyComment, setFriendlyComment] = useState("");
+    const [addComments, setAddComments] = useState("");
     const [moodRating, setMoodRating] = useState("");
 
     // const handleChange = (e, func) => (
@@ -25,7 +25,7 @@ function DailyJournal ({dailyEntry}) {
             questionTwo,
             questionThree,
             moodRating,
-            friendlyComment
+            addComments
         }
         dailyEntry(entryObj);
     }
@@ -62,18 +62,19 @@ function DailyJournal ({dailyEntry}) {
                 onChange={e => setQuestionThree(e.target.value)}>
                 </input>
                 <p>Mood Rating</p>
-                <button id="1" onClick={handleClick}>1</button>
-                <button id="2" onClick={handleClick}>2</button>
-                <button id="3" onClick={handleClick}>3</button>
-                <button id="4" onClick={handleClick}>4</button>
-                <button id="5" onClick={handleClick}>5</button>
+                <button id="1" type="button" onClick={handleClick}>1</button>
+                <button id="2" type="button" onClick={handleClick}>2</button>
+                <button id="3" type="button" onClick={handleClick}>3</button>
+                <button id="4" type="button" onClick={handleClick}>4</button>
+                <button id="5" type="button" onClick={handleClick}>5</button>
                 <p>Say something nice about yourself. You deserve it!</p>
                 <input type="text"
                 id="addComments"
                 placeholder="Be kind"
-                value={friendlyComment}
-                onChange={e => setFriendlyComment(e.target.value)}>
+                value={addComments}
+                onChange={e => setAddComments(e.target.value)}>
                 </input>
+                <input type="submit" className="button" value="Submit daily journal"></input>
 
             </form>
         </div>

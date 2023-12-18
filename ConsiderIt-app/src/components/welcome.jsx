@@ -9,11 +9,11 @@ function Welcome ({userName}) {
     }
     const submitName = (e) => {
         e.preventDefault();
-        userName(inputName.toLowerCase())
+        userName(inputName)
     }
     return (
         <>
-            <div class="container">
+            <div className="container">
                 <h1>Hello there..</h1>
                 <form onSubmit={submitName}>
                     <input type="text" 
