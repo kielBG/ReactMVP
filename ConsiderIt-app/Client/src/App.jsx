@@ -52,7 +52,7 @@ function App() {
     const res = await fetch(`https://considerit-server.onrender.com/api/journal/${id}`, {
         method: "DELETE"
       });
-      
+
       function filterByID(item) {
         if (item.id !== id) {
           return true;
@@ -65,6 +65,27 @@ function App() {
       setJournalEntries(updatedEntries);
 
   }
+
+  const editJournalEntry = async (id, obj) => {
+
+    const res = await fetch(`https://considerit-server.onrender.com/api/journal/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(obj)
+    });
+
+    const getEdittedPosts = async () => {
+      const res = await fetch(`https://considerit-server.onrender.com/api/journal/${name}`);
+      const data =  await res.json();
+      setJournalEntries(data);
+    }
+
+    getEdittedPosts();
+
+  }
+
   
 
   const userName = (text) => {
@@ -104,6 +125,7 @@ function App() {
     //state of all journal entries to map into multiple cards, set loading for fetch (put and delete, maybe a get one)
     return <JournalEntries journalEntries={journalEntries}
     deleteEntry={deleteEntry}
+    editJournalEntry={editJournalEntry}
     />
   }
 

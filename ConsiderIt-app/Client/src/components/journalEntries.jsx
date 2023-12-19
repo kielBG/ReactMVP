@@ -1,14 +1,15 @@
 import JournalEntry from "./journalEntry"
 
 
-function JournalEntries({journalEntries, deleteEntry}) {
+function JournalEntries({journalEntries, deleteEntry, editJournalEntry}) {
 
 
     return journalEntries.map( (journalEntry) => (
         <>
         <div  key={journalEntry.id}>
         <JournalEntry journalEntry={journalEntry} 
-        deleteEntry={deleteEntry}/>
+        deleteEntry={deleteEntry}
+        editJournalEntry={editJournalEntry}/>
         </div>
         </>
         

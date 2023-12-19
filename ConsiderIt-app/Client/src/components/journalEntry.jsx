@@ -1,17 +1,23 @@
+import EditEntry from "./editEntry";
+import { useState } from "react";
 
-function JournalEntry ({journalEntry, deleteEntry}) {
+
+function JournalEntry ({journalEntry, deleteEntry, editJournalEntry}) {
+    const [editView, setEditView] = useState(false)
 
     const deleteClick = (e) => {
-
         deleteEntry(journalEntry.id)
-
     }
 
     const editClick = (e) => {
-        console.log(edit);
+        setEditView(true)
     }
 
+    const exitEditView = () => {
+        setEditView(false);
+    }
 
+    if(!editView) {
     return (
     <>
     <div className="entryCard">
@@ -25,6 +31,19 @@ function JournalEntry ({journalEntry, deleteEntry}) {
     </div>
     </>
     )
+    }else {
+        return (
+
+        <>
+        <div className="entryCard">
+        <EditEntry journalEntry={journalEntry}
+        editJournalEntry={editJournalEntry}
+        exitEditView={exitEditView}/>
+        </div>
+        </>
+
+        )
+    } 
 }
 
 export default JournalEntry
