@@ -1,9 +1,9 @@
 CREATE TABLE journal (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(50),
-    firstQuestion VARCHAR(500),
-    secondQuestion VARCHAR(500),
-    thirdQuestion VARCHAR(500),
-    moodRating INT,
-    addComments VARCHAR(500)
+    name VARCHAR(50) NOT NULL,
+    firstquestion VARCHAR(500) NOT NULL,
+    secondquestion VARCHAR(500) NOT NULL,
+    thirdquestion VARCHAR(500) NOT NULL,
+    moodrating INT NOT NULL,
+    addcomments VARCHAR(500) NOT NULL
 )

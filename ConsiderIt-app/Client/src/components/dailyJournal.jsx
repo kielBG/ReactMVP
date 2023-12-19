@@ -3,9 +3,9 @@ import { useState } from "react";
 
 
 function DailyJournal ({dailyEntry}) {
-    const [questionOne, setQuestionOne] = useState("");
-    const [questionTwo, setQuestionTwo] = useState("");
-    const [questionThree, setQuestionThree] = useState("");
+    const [firstQuestion, setFirstQuestion] = useState("");
+    const [secondQuestion, setSecondQuestion] = useState("");
+    const [thirdQuestion, setThirdQuestion] = useState("");
     const [addComments, setAddComments] = useState("");
     const [moodRating, setMoodRating] = useState("");
 
@@ -21,11 +21,11 @@ function DailyJournal ({dailyEntry}) {
         e.preventDefault()
 
         const entryObj = {
-            questionOne,
-            questionTwo,
-            questionThree,
-            moodRating,
-            addComments
+            firstquestion: firstQuestion,
+            secondquestion: secondQuestion,
+            thirdquestion: thirdQuestion,
+            moodrating: moodRating,
+            addcomments: addComments
         }
         dailyEntry(entryObj);
     }
@@ -40,8 +40,8 @@ function DailyJournal ({dailyEntry}) {
                 <input type="text"
                 id="question1"
                 placeholder="I like smiling"
-                value={questionOne}
-                onChange={e => setQuestionOne(e.target.value)}>
+                value={firstQuestion}
+                onChange={e => setFirstQuestion(e.target.value)}>
                 </input>
                 <p>Was there any specific experiences today that were particularly stressful or challanging?<br />
                 If so, what ways did you cope or respond to the situation?<br />
@@ -50,16 +50,16 @@ function DailyJournal ({dailyEntry}) {
                 <input type="text"
                 id="question2"
                 placeholder="Chocolate is delicious"
-                value={questionTwo}
-                onChange={e => setQuestionTwo(e.target.value)}>
+                value={secondQuestion}
+                onChange={e => setSecondQuestion(e.target.value)}>
                 </input>
                 <p>Picture a friend you care about experiencing what you are going through. <br />
                 What constructive advice or insights would you give them to ease their journey?</p>
                 <input type="text"
                 id="question3"
                 placeholder="Hello friend!"
-                value={questionThree}
-                onChange={e => setQuestionThree(e.target.value)}>
+                value={thirdQuestion}
+                onChange={e => setThirdQuestion(e.target.value)}>
                 </input>
                 <p>Mood Rating</p>
                 <button id="1" type="button" onClick={handleClick}>1</button>

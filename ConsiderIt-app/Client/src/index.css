@@ -1,5 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Noto%20Serif%20Ethiopic:700|Noto%20Serif%20Ethiopic:400');
+
+html {font-size: 100%;} /* 16px */
+
+h1 {font-size: 4.210rem; /* 67.36px */}
+
+h2 {font-size: 3.158rem; /* 50.56px */}
+
+h3 {font-size: 2.369rem; /* 37.92px */}
+
+h4 {font-size: 1.777rem; /* 28.48px */}
+
+h5 {font-size: 1.333rem; /* 21.28px */}
+
+small {font-size: 0.750rem; /* 12px */}
+
+*{
+  background-image: url('https://images.unsplash.com/photo-1548352599-413c8b2703d1?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+  --text: #0c1817;
+  --background: #f5fafa;
+  --primary: #5eb5aa;
+  --secondary: #a8b8d6;
+  --accent: #777fc0;
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Noto Serif Ethiopic';
   line-height: 1.5;
   font-weight: 400;
 

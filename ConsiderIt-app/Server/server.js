@@ -55,10 +55,10 @@ app.get('/api/journal/:name', async (req, res) => {
 //create one
 app.post('/api/journal', async (req, res) => {
     const client = await pool.connect();
-    const {name, firstQuestion, secondQuestion, thirdQuestion, moodRating, addComments} = req.body;
+    const {name, firstquestion, secondquestion, thirdquestion, moodrating, addcomments} = req.body;
     console.log(req.body.song_title);
     try {
-        const result = await pool.query('INSERT INTO journal (name, firstQuestion, secondQuestion, thirdQuestion, moodRating, addComments) VALUES ($1, $2, $3, $4, $5, $6)', [name, firstQuestion, secondQuestion, thirdQuestion, moodRating, addComments]);
+        const result = await pool.query('INSERT INTO journal (name, firstquestion, secondquestion, thirdquestion, moodrating, addcomments) VALUES ($1, $2, $3, $4, $5, $6)', [name, firstquestion, secondquestion, thirdquestion, moodrating, addcomments]);
         res.json(req.body);
     } 
     catch (error) {
@@ -73,10 +73,10 @@ app.post('/api/journal', async (req, res) => {
 //put one
 app.put('/api/journal/:id', async (req, res) => {
     const client = await pool.connect();
-    const {name, firstQuestion, secondQuestion, thirdQuestion, moodRating, addComments} = req.body;
+    const {name, firstquestion, secondquestion, thirdquestion, moodrating, addcomments} = req.body;
     const {id} = req.params;
     try {
-        const result = await client.query('UPDATE journal SET name = $1, firstQuestion = $2, secondQuestion = $3, thirdQuestion = $4, moodRating = $5, addComments =$6 WHERE id = $7', [name, firstQuestion, secondQuestion, thirdQuestion, moodRating, addComments, id]);
+        const result = await client.query('UPDATE journal SET name = $1, firstquestion = $2, secondquestion = $3, thirdquestion = $4, moodrating = $5, addcomments =$6 WHERE id = $7', [name, firstquestion, secondquestion, thirdquestion, moodrating, addcomments, id]);
         res.json(req.body);
     } 
     catch (error) {
