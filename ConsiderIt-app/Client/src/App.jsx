@@ -1,16 +1,13 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import './index.css'
 import Welcome from "./components/welcome.jsx"
 import DailyJournal from "./components/dailyJournal.jsx"
 import JournalEntries from "./components/journalEntries.jsx"
-import Loading from "./components/loading.jsx"
 
 function App() {
   const [name, setName] = useState("");
   const [journalEntry, setJournalEntry] = useState("");
   const [journalEntries, setJournalEntries] = useState([]);
-  const [loading, setLoading] = useState(false);
 
 
   useEffect (() => {
@@ -37,13 +34,37 @@ function App() {
       });
     }
 
-    if (journalEntry) {
+    if (journalEntry === true) {
+      return "didn't run a post";
+
+    } else if (journalEntry) {
       createPost();
       setJournalEntry(true)
     }
+
     
 
   }, [journalEntry]);
+
+
+  const deleteEntry = async (id) => {
+    
+    const res = await fetch(`https://considerit-server.onrender.com/api/journal/${id}`, {
+        method: "DELETE"
+      });
+      
+      function filterByID(item) {
+        if (item.id !== id) {
+          return true;
+        }
+        return false;
+      }
+
+      const updatedEntries = journalEntries.filter(filterByID);
+
+      setJournalEntries(updatedEntries);
+
+  }
   
 
   const userName = (text) => {
@@ -53,7 +74,11 @@ function App() {
 
   const dailyEntry = (obj) => {
     const newEntry = {name, ...obj}
-    const newEntries = [...journalEntries, newEntry]
+    const newEntryWithId = {
+      id: journalEntries[journalEntries.length - 1].id + 1 ,
+      ...newEntry
+    }
+    const newEntries = [...journalEntries, newEntryWithId]
     setJournalEntries(newEntries)
     setJournalEntry(newEntry);
   }
@@ -77,12 +102,11 @@ function App() {
 
     //main page with prev entries
     //state of all journal entries to map into multiple cards, set loading for fetch (put and delete, maybe a get one)
-    return <JournalEntries journalEntries={journalEntries}/>
+    return <JournalEntries journalEntries={journalEntries}
+    deleteEntry={deleteEntry}
+    />
   }
 
-  //loading
-  //state of loading (t or f)
-  //<Loading />
 }
 
 export default App
