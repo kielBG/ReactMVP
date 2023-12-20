@@ -4,21 +4,25 @@ import Welcome from "./components/welcome.jsx"
 import DailyJournal from "./components/dailyJournal.jsx"
 import JournalEntries from "./components/journalEntries.jsx"
 import HomeButton from './components/homeButton.jsx'
+import Loading from './components/loading.jsx'
 
 function App() {
   const [name, setName] = useState("");
   const [journalEntry, setJournalEntry] = useState("");
   const [journalEntries, setJournalEntries] = useState([]);
   const [editView, setEditView] = useState(false)
-
+  const [loading, setLoading] = useState(false)
 
   useEffect (() => {
     const getPrevPosts = async () => {
       const res = await fetch(`https://considerit-server.onrender.com/api/journal/${name}`);
       const data =  await res.json();
+
       setJournalEntries(data);
+      setLoading(false);
     }
     if (name) {
+      setLoading(true);
       getPrevPosts();
     }
     
@@ -84,8 +88,9 @@ function App() {
       const res = await fetch(`https://considerit-server.onrender.com/api/journal/${name}`);
       const data =  await res.json();
       setJournalEntries(data);
+      setLoading(false)
     }
-
+    setLoading(true)
     getEdittedPosts();
 
   }
@@ -120,7 +125,9 @@ function App() {
     <HomeButton home={home} 
     name={name}
     changeEditView={changeEditView}/>
-      {!name && !journalEntry
+    <div className='mainContainer'>
+      {loading ? <Loading /> :
+      !name && !journalEntry
         ? <Welcome userName={userName} />
         : !journalEntry
           ? (
@@ -136,6 +143,7 @@ function App() {
               changeEditView={changeEditView}
             />
       }
+    </div>
     </>
   );
 

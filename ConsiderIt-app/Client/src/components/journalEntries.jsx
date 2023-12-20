@@ -2,11 +2,11 @@ import JournalEntry from "./journalEntry"
 
 
 function JournalEntries({journalEntries, deleteEntry, editJournalEntry, changeEditView, editView}) {
+    const reversedEntries = journalEntries.slice().reverse()
 
-
-    return journalEntries.map( (journalEntry) => (
+    return reversedEntries.map( (journalEntry) => (
         <>
-        <div  key={journalEntry.id}>
+        <div className="journal" key={journalEntry.id}>
         <JournalEntry journalEntry={journalEntry} 
         deleteEntry={deleteEntry}
         editJournalEntry={editJournalEntry}
