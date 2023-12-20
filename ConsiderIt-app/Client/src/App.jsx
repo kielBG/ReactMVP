@@ -3,6 +3,7 @@ import './App.css'
 import Welcome from "./components/welcome.jsx"
 import DailyJournal from "./components/dailyJournal.jsx"
 import JournalEntries from "./components/journalEntries.jsx"
+import HomeButton from './components/homeButton.jsx'
 
 function App() {
   const [name, setName] = useState("");
@@ -35,7 +36,9 @@ function App() {
     }
 
     if (journalEntry === true) {
-      return "didn't run a post";
+      return () => {
+        console.log("nope");
+      };
 
     } else if (journalEntry) {
       createPost();
@@ -86,7 +89,9 @@ function App() {
 
   }
 
-  
+  const home = () => {
+    setJournalEntry(true)
+  }
 
   const userName = (text) => {
     setName(text)
@@ -105,30 +110,44 @@ function App() {
   }
 
 
-  if (!name && !journalEntry) {
-
-    //welcome page with name input
-    //wrapper func with setState for the name, set loading for fetch (get all)
-    
-    return <Welcome userName={userName}/>
-
-  } else if (!journalEntry) {
-
-    //daily journal page with journal inputs
-    //local state for saving the entries poss and set state for saving the entries in a object, set loading for fetch (create)
-
-    return <DailyJournal dailyEntry={dailyEntry}/>
-
-  } else {
-
-    //main page with prev entries
-    //state of all journal entries to map into multiple cards, set loading for fetch (put and delete, maybe a get one)
-    return <JournalEntries journalEntries={journalEntries}
-    deleteEntry={deleteEntry}
-    editJournalEntry={editJournalEntry}
-    />
-  }
+  return (
+    <>
+    <HomeButton home={home} />
+      {!name && !journalEntry
+        ? <Welcome userName={userName} />
+        : !journalEntry
+          ? (
+            <>
+              <DailyJournal dailyEntry={dailyEntry} />
+            </>
+          )
+          : <JournalEntries
+              journalEntries={journalEntries}
+              deleteEntry={deleteEntry}
+              editJournalEntry={editJournalEntry}
+            />
+      }
+    </>
+  );
 
 }
 
 export default App
+
+/*
+if (!name && !journalEntry){
+return (
+  <Welcome username={username}
+)
+}
+if ()
+
+
+ 
+  if(!journalEntry){
+    <Daily Journal dailyEntry={dailyEntry}
+  }
+)
+}
+
+*/

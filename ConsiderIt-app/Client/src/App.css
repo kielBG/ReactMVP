@@ -26,6 +26,8 @@ small {font-size: 0.750rem; /* 12px */}
   --primary: #5eb5aa;
   --secondary: #a8b8d6;
   --accent: #777fc0;
+
+  font-family: "Noto Serif Ethiopic";
 }
 
 #root {
