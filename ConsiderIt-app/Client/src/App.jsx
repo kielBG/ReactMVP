@@ -9,6 +9,7 @@ function App() {
   const [name, setName] = useState("");
   const [journalEntry, setJournalEntry] = useState("");
   const [journalEntries, setJournalEntries] = useState([]);
+  const [editView, setEditView] = useState(false)
 
 
   useEffect (() => {
@@ -109,10 +110,16 @@ function App() {
     setJournalEntry(newEntry);
   }
 
+  const changeEditView = (boolean) => {
+    setEditView(boolean)
+  }
+
 
   return (
     <>
-    <HomeButton home={home} />
+    <HomeButton home={home} 
+    name={name}
+    changeEditView={changeEditView}/>
       {!name && !journalEntry
         ? <Welcome userName={userName} />
         : !journalEntry
@@ -125,6 +132,8 @@ function App() {
               journalEntries={journalEntries}
               deleteEntry={deleteEntry}
               editJournalEntry={editJournalEntry}
+              editView={editView}
+              changeEditView={changeEditView}
             />
       }
     </>

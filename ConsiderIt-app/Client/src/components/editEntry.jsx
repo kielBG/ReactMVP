@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-function EditEntry(journalEntry, editJournalEntry, exitEditView) {
+function EditEntry(journalEntry, editJournalEntry, changeEditView) {
 
     const [firstQuestion, setFirstQuestion] = useState("");
     const [secondQuestion, setSecondQuestion] = useState("");
@@ -26,27 +26,40 @@ function EditEntry(journalEntry, editJournalEntry, exitEditView) {
 
         journalEntry.editJournalEntry(e.target.id, editObj);
 
-        journalEntry.exitEditView();
+        journalEntry.changeEditView(false);
     }
 
     return (
     <>
-        <p>What needs editting?</p>
+        <h4>What needs editting?</h4>
         <p>{journalEntry.journalEntry.firstquestion}</p>
-        <input type="text" placeholder={journalEntry.journalEntry.firstquestion} value={firstQuestion} 
+        <input className="dailyEntry"
+        type="text" 
+        placeholder={journalEntry.journalEntry.firstquestion} 
+        value={firstQuestion} 
         onChange={e => setFirstQuestion(e.target.value)}></input>
         <p>{journalEntry.journalEntry.secondquestion}</p>
-        <input type="text" placeholder={journalEntry.journalEntry.secondquestion} value={secondQuestion} onChange={e => setSecondQuestion(e.target.value)}></input>
+        <input className="dailyEntry"
+        type="text" 
+        placeholder={journalEntry.journalEntry.secondquestion} 
+        value={secondQuestion} 
+        onChange={e => setSecondQuestion(e.target.value)}></input>
         <p>{journalEntry.journalEntry.thirdquestion}</p>
-        <input type="text" placeholder={journalEntry.journalEntry.thirdquestion} value={thirdQuestion} onChange={e => setThirdQuestion(e.target.value)}></input>
+        <input className="dailyEntry"
+        type="text" placeholder={journalEntry.journalEntry.thirdquestion} 
+        value={thirdQuestion} 
+        onChange={e => setThirdQuestion(e.target.value)}></input>
         <p>Previous Mood Rating: {journalEntry.journalEntry.moodrating}</p>
-                <button id="1" type="button" onClick={handleClick}>1</button>
-                <button id="2" type="button" onClick={handleClick}>2</button>
-                <button id="3" type="button" onClick={handleClick}>3</button>
-                <button id="4" type="button" onClick={handleClick}>4</button>
-                <button id="5" type="button" onClick={handleClick}>5</button>
+            <button id="1" type="button" onClick={handleClick}>1</button>
+            <button id="2" type="button" onClick={handleClick}>2</button>
+            <button id="3" type="button" onClick={handleClick}>3</button>
+            <button id="4" type="button" onClick={handleClick}>4</button>
+            <button id="5" type="button" onClick={handleClick}>5</button>
         <p>{journalEntry.journalEntry.addcomments}</p>
-        <input type="text" placeholder={journalEntry.journalEntry.addcomments} value={addComments} onChange={e => setAddComments(e.target.value)}></input>
+        <input className="dailyEntry"
+        type="text" 
+        placeholder={journalEntry.journalEntry.addcomments} value={addComments} 
+        onChange={e => setAddComments(e.target.value)}></input>
         <button onClick={handleSubmitClick} id={journalEntry.journalEntry.id}>Submit Changes</button>
     </>
     )

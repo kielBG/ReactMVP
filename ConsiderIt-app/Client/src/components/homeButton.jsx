@@ -1,11 +1,19 @@
 
-function HomeButton ({home}) {
+function HomeButton ({home, name, changeEditView}) {
 
     const handleClick = (e) => {
-        home();
+        if(name) {
+            home();
+            changeEditView(false);
+        }
+        
     }
 
-    return <button onClick={handleClick}>ConsiderIt</button>
+    return(
+     <div className="home" onClick={handleClick}>Consider
+    <span className="highlightText">It</span>
+    </div>
+    )
 
 }
 

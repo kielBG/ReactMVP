@@ -37,9 +37,10 @@ function DailyJournal ({dailyEntry}) {
             <h1>Daily Journal</h1>
             <form onSubmit={handleSubmit}>
                 <p>How is your overall mood and mindset today?</p>
-                <input type="text"
+                <input className="dailyEntry"
+                type="text"
                 id="question1"
-                placeholder="I like smiling"
+                placeholder="Learn as if you will live forever, live like you will die tomorrow"
                 value={firstQuestion}
                 onChange={e => setFirstQuestion(e.target.value)}>
                 </input>
@@ -47,17 +48,19 @@ function DailyJournal ({dailyEntry}) {
                 If so, what ways did you cope or respond to the situation?<br />
                 If not, what was a positive emotional highlight today?
                 </p>
-                <input type="text"
+                <input className="dailyEntry" 
+                type="text"
                 id="question2"
-                placeholder="Chocolate is delicious"
+                placeholder="When you change your thoughts, remember to also change your world."
                 value={secondQuestion}
                 onChange={e => setSecondQuestion(e.target.value)}>
                 </input>
                 <p>Picture a friend you care about experiencing what you are going through. <br />
                 What constructive advice or insights would you give them to ease their journey?</p>
-                <input type="text"
+                <input className="dailyEntry"
+                type="text"
                 id="question3"
-                placeholder="Hello friend!"
+                placeholder="It is only when we take chances, when our lives improve."
                 value={thirdQuestion}
                 onChange={e => setThirdQuestion(e.target.value)}>
                 </input>
@@ -68,9 +71,10 @@ function DailyJournal ({dailyEntry}) {
                 <button id="4" type="button" onClick={handleClick}>4</button>
                 <button id="5" type="button" onClick={handleClick}>5</button>
                 <p>Say something nice about yourself. You deserve it!</p>
-                <input type="text"
+                <input className="dailyEntry"
+                type="text"
                 id="addComments"
-                placeholder="Be kind"
+                placeholder='Don not let yesterday take up too much of today.'
                 value={addComments}
                 onChange={e => setAddComments(e.target.value)}>
                 </input>
