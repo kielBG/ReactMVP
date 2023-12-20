@@ -87,11 +87,11 @@ button:focus-visible, .button:focus-visible {
   transition: border-color 0.25s;
   cursor: pointer;
   color: var(--background);
-  font-size: x-large;
+  font-size: xx-large;
   font-style: italic;
   position:fixed;
-  top:0;
-  left:0; 
+  top:1.5em;
+  left:1.5em; 
 }
 
 .highlightText {
