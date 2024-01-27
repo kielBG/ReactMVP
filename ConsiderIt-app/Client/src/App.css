@@ -52,6 +52,7 @@ small {font-size: 0.750rem; /* 12px */}
 
 .mainContainer {
   width: 50%;
+  min-height: 100vh;
 }
 
 .journal {

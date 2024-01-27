@@ -16,6 +16,7 @@ function App() {
   useEffect (() => {
     const getPrevPosts = async () => {
       const res = await fetch(`https://considerit-server.onrender.com/api/journal/${name}`);
+      //http://localhost:8000/api/journal/${name}
       const data =  await res.json();
 
       setJournalEntries(data);
@@ -31,6 +32,7 @@ function App() {
 
   useEffect (() => {
     const createPost = async () => {
+      //http://localhost:8000/api/journal
       const res = await fetch(`https://considerit-server.onrender.com/api/journal`, {
         method: "POST",
         headers: {
@@ -56,7 +58,7 @@ function App() {
 
 
   const deleteEntry = async (id) => {
-    
+    //http://localhost:8000/api/journal/${id}
     const res = await fetch(`https://considerit-server.onrender.com/api/journal/${id}`, {
         method: "DELETE"
       });
@@ -75,7 +77,7 @@ function App() {
   }
 
   const editJournalEntry = async (id, obj) => {
-
+    //http://localhost:8000/api/journal/${id}
     const res = await fetch(`https://considerit-server.onrender.com/api/journal/${id}`, {
       method: "PUT",
       headers: {
@@ -85,6 +87,7 @@ function App() {
     });
 
     const getEdittedPosts = async () => {
+      //http://localhost:8000/api/journal/${name}
       const res = await fetch(`https://considerit-server.onrender.com/api/journal/${name}`);
       const data =  await res.json();
       setJournalEntries(data);
@@ -105,14 +108,20 @@ function App() {
   }
 
   const dailyEntry = (obj) => {
-    const newEntry = {name, ...obj}
-    const newEntryWithId = {
-      id: journalEntries[journalEntries.length - 1].id + 1 ,
-      ...newEntry
+    const newEntry = {name, ...obj};
+    if (journalEntries.length > 0) {
+      const newEntryWithId = {
+        id: journalEntries[journalEntries.length - 1].id + 1 ,
+        ...newEntry
+      }
+      const newEntries = [...journalEntries, newEntryWithId]
+      setJournalEntries(newEntries);
+      setJournalEntry(newEntry);
+    } else {
+      setJournalEntries([newEntry]);
+      setJournalEntry(newEntry);
     }
-    const newEntries = [...journalEntries, newEntryWithId]
-    setJournalEntries(newEntries)
-    setJournalEntry(newEntry);
+    
   }
 
   const changeEditView = (boolean) => {
@@ -150,21 +159,3 @@ function App() {
 }
 
 export default App
-
-/*
-if (!name && !journalEntry){
-return (
-  <Welcome username={username}
-)
-}
-if ()
-
-
- 
-  if(!journalEntry){
-    <Daily Journal dailyEntry={dailyEntry}
-  }
-)
-}
-
-*/
