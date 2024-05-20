@@ -1,1 +1,0 @@
-SELECT * FROM journal WHERE name = 'Kiel'
